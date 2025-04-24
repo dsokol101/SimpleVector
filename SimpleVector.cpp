@@ -18,11 +18,11 @@ SimpleVector &SimpleVector::operator=(const SimpleVector &other)
     }
 
     delete[] arr;            // delete the current array that I (this) point to
-    arr = new int[capacity]; // allocate memory for the new array
     size = other.size;
     capacity = other.capacity;
+    arr = new int[capacity]; // allocate memory for the new array
     // copy the elements from the other array
-    for (int i = 0; i < other.size; i++)
+    for (int i = 0; i < size; i++)
     {
         arr[i] = other.arr[i];
     }
