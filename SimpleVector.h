@@ -27,16 +27,27 @@ private:
 
 public:
     // default constructor
-    SimpleVector() : arr{new int[DEFAULT_CAPACITY]}, size{0}, capacity{DEFAULT_CAPACITY} {} // default constructor;
+    SimpleVector() : arr{new int[DEFAULT_CAPACITY]}, size{0}, capacity{DEFAULT_CAPACITY}
+    {
+        std::cout << "in the default constructor" << std::endl;
+    }
     // parameter constructor
-    SimpleVector(int cap) : size{0}, capacity{cap} { arr = new int[cap]; }
+    SimpleVector(int cap) : size{0}, capacity{cap}
+    {
+        arr = new int[cap];
+        std::cout << "in the parameter constructor" << std::endl;
+    }
     // copy constructor
     SimpleVector(const SimpleVector &other);
+    // move constructor
+    SimpleVector(SimpleVector &&other);
     // destructor
     ~SimpleVector() { delete[] arr; }
     SimpleVector &operator=(const SimpleVector &other);
+    SimpleVector &operator=(SimpleVector &&other);
     const int &operator[](size_t index) const;
     int &operator[](size_t index);
     int getSize() const { return size; }
+    void push_back(int value); // grow the array if needed
 };
 #endif
